@@ -1,5 +1,10 @@
 const initialState = {
-    smurfs: []
+    smurfs: [],
+    newSmurf: {
+        name: '',
+        age: '',
+        height: ''
+    }
 }
 
 export default initialState

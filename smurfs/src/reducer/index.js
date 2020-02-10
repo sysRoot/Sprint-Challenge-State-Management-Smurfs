@@ -4,6 +4,18 @@ export const reducer = (state, action) => {
             const newState = { ...state, smurfs: [...action.payload] };
             return newState
         }
+        case 'SET_NAME': {
+            const newState = {...state, newSmurf: {...state.newSmurf, name: action.payload}}
+            return newState
+        }
+        case 'SET_AGE': {
+            const newState = {...state, newSmurf: {...state.newSmurf, age: action.payload}}
+            return newState
+        }
+        case 'SET_HEIGHT': {
+            const newState = {...state, newSmurf: {...state.newSmurf, height: action.payload}}
+            return newState
+        }
         default: {
             return state
         }

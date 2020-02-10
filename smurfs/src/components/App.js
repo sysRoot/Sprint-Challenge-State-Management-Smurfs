@@ -4,6 +4,8 @@ import { reducer } from '../reducer';
 import initialState from '../state';
 import axios from 'axios';
 import './App.css';
+import SmurfList from './Smurfs/SmurfList';
+import Nav from './Nav';
 
 const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -20,7 +22,10 @@ const App = () => {
     return (
         <SmurfContext.Provider value={{ state }}>
             <DispatchContext.Provider value={{ dispatch }}>
-                <div className='App'></div>
+                <div className='App'>
+                    <Nav />
+                    <SmurfList />
+                </div>
             </DispatchContext.Provider>
         </SmurfContext.Provider>
     );

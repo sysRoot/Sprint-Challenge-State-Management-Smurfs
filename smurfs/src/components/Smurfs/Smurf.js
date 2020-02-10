@@ -8,7 +8,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 275
+        minWidth: 275,
+        width: 220,
+        margin: 5
+
     },
     title: {
         fontSize: 14
@@ -32,6 +35,8 @@ const Smurf = props => {
                 </Typography>
                 <Typography className={classes.pos} color='textSecondary'>
                     {props.smurf.age}
+                </Typography>
+                <Typography className={classes.pos} color='textSecondary'>
                     {props.smurf.height}
                 </Typography>
             </CardContent>
