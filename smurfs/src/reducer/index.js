@@ -4,6 +4,10 @@ export const reducer = (state, action) => {
             const newState = { ...state, smurfs: [...action.payload] };
             return newState
         }
+        case 'UPDATE_DATA': {
+            const newState = { ...state, smurfs: [...action.payload], newSmurf: {age: '', name: '', height: ''} };
+            return newState
+        }
         case 'SET_NAME': {
             const newState = {...state, newSmurf: {...state.newSmurf, name: action.payload}}
             return newState

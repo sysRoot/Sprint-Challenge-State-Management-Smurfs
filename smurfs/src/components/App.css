@@ -2,7 +2,8 @@
   text-align: center;
 }
 
-.smurf  { 
-  width: 220px;
-  margin: 5px;
+.flex { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

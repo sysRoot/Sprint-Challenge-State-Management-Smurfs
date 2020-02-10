@@ -66,7 +66,7 @@ const Nav = () => {
         axios
         .post('http://localhost:3333/smurfs', state.newSmurf)
         .then(res => {
-            // dispatch({ type: 'FETCH_DATA', payload: res.data });
+            dispatch({ type: 'UPDATE_DATA', payload: res.data });
             console.log(res.data);
         })
         .catch(err => console.log(err));
@@ -121,7 +121,10 @@ const Nav = () => {
                                         value={state.newSmurf.height}
                                     />
                                     <br />
-                                    <Button variant='contained' color='primary'>
+                                    <Button variant='contained' color='primary' onClick={(e)=> {
+                                        newSmurfAdd(state.newSmurf)
+                                        handleClose()
+                                    }}>
                                         Add!
                                     </Button>
                                 </form>
