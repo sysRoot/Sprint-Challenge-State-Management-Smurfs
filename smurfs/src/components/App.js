@@ -1,16 +1,34 @@
-import React, { Component } from "react";
-import "./App.css";
-class App extends Component {
-  render() {
+import React, { useEffect, useReducer } from 'react';
+import { SmurfContext, DispatchContext } from '../contexts';
+import { reducer } from '../reducer';
+import initialState from '../state';
+import axios from 'axios';
+import './App.css';
+import SmurfList from './Smurfs/SmurfList';
+import Nav from './Nav';
+
+const App = () => {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    useEffect(() => {
+        axios
+            .get('http://localhost:3333/smurfs')
+            .then(res => {
+                dispatch({ type: 'FETCH_DATA', payload: res.data });
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+    }, []);
+
     return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
+        <SmurfContext.Provider value={{ state }}>
+            <DispatchContext.Provider value={{ dispatch }}>
+                <div className='App'>
+                    <Nav />
+                    <SmurfList />
+                </div>
+            </DispatchContext.Provider>
+        </SmurfContext.Provider>
     );
-  }
-}
+};
 
 export default App;
